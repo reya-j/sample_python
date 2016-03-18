@@ -33,7 +33,7 @@ build:
     - $SHIPPABLE_BUILD_DIR/requirement.txt
     - $SHIPPABLE_BUILD_DIR/test.py
     - $SHIPPABLE_BUILD_DIR/app.py
-    - /u14
+
 
 integrations:
   hub:
