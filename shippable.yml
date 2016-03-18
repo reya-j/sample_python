@@ -30,7 +30,7 @@ build:
   cache: true
   
   cache_dir_list: 
-    - $SHIPPABLE_BUILD_DIR/requirement.txt
+    - $SHIPPABLE_BUILD_DIR/requirements.txt
     - $SHIPPABLE_BUILD_DIR/test.py
     - $SHIPPABLE_BUILD_DIR/app.py
     - /u14
