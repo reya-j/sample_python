@@ -27,13 +27,11 @@ build:
   post_ci:
     - docker push shippabledocker/hitchcock2_sample_python
     
-  cache: true
+  cache: false
   
   cache_dir_list: 
     - $SHIPPABLE_BUILD_DIR/requirements.txt
-    - $SHIPPABLE_BUILD_DIR/test.py
-    - $SHIPPABLE_BUILD_DIR/app.py
-    - /u14
+
 
 integrations:
   hub:
