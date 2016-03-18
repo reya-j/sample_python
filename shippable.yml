@@ -30,8 +30,6 @@ build:
  
   cache: true
   
-  cache_dir_list: 
-    - /
 
 
 
