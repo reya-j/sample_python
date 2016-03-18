@@ -26,13 +26,15 @@ build:
 
   post_ci:
     - docker push shippabledocker/hitchcock2_sample_python
-
+    
+  cache: true
+  
+  cache_dir_list: 
+    - $SHIPPABLE_BUILD_DIR/requirements.txt
 
 integrations:
   hub:
     - integrationName: ship-docker
       type: docker
-      branches: 
-        only:
-          - master
+  
    
