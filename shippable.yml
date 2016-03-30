@@ -1,38 +1,67 @@
+
 language: python
+#build_image: drydock/u14pytpls:prod
+#build_image: shippable/minv2:beta
 
 python:
+  - 2.6
+  - 2.7
+  - 3.2
+  - 3.3
   - 3.4
-
-env:
-  global:
-    - FOO=FUBU
-
-  matrix:
-    - M1=ONE
+  - 3.5
+  - pypy
+  - pypy3
 
 build:
-  pre_ci:
-    - docker build -t=shippabledocker/hitchcock2_sample_python .
-
-  pre_ci_boot:
-    image_name: shippabledocker/hitchcock2_sample_python
-    image_tag: latest
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
-
   ci:
-    - ps -eax
-    - ls -al
-
-  post_ci:
-    - docker push shippabledocker/hitchcock2_sample_python
-
-
+    - if [[ $SHIPPABLE_PYTHON == '3.2' ]]; then pip install coverage==3.7.1 codecov ; fi
+    - echo $SHIPPABLE_PYTHON
+    - pip install -r requirements.txt
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+    - git --version
+    - python --version
+    - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+    - which python && coverage run --branch test.py
+    - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
+    - echo $BUILD_NUMBER 
+    - echo $BUILD_URL
+    - echo $BRANCH
+    
 integrations:
-  hub:
-    - integrationName: ship-docker
-      type: docker
-      branches: 
-        only:
-          - master
-   
+   notifications:
+    - integrationName: ship_slack
+      type: slack
+      recipients:
+        - "#random" 
+        - "#public-chnl" 
+      on_start: always
+      on_success: never
+      on_failure: always
+      
+    - integrationName: "ship-slack1"
+      type: slack
+      on_failure: always
+      on_start: always
+      on_success: always
+      recipients:
+        - "#general"
+      
+    - integrationName: email      
+      type: email   
+      recipients: 
+          - sreyaj10@gmail.com
+          - sreya@shippable.com
+      on_start: never
+      on_success: always 
+      on_failure: always 
+    
+    - integrationName: irc   
+      type: irc
+      recipients:
+        - "chat.freenode.net#test-irc"
+        - "chat.freenode.net#test1-irc"
+      on_start: always
+      on_success: always      
+      on_failure: always 
