@@ -15,7 +15,7 @@ python:
 
 build:
   ci:
-    - if [[ $SHIPPABLE_PYTHON == '3.2' ]]; then pip install coverage==3.7.1 codecov ; fi
+    - if [[ $SHIPPABLE_PYTHON_VERSION == '3.2' ]]; then pip install coverage==3.7.1 codecov ; fi
     - echo $SHIPPABLE_PYTHON
     - pip install -r requirements.txt
     - mkdir -p shippable/testresults
