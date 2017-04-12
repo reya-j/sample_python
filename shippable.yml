@@ -12,7 +12,7 @@ env:
 
 build:
    pre_ci:
-    - docker build -t=shiphitchcock4/hitchcock4_sample_nodenewimage1:test .
+     - docker build -t=shiphitchcock4/hitchcock4_sample_nodenewimage1:test .
 
 #  pre_ci:
  #   - docker build -t=shippabledocker/hitchcock2_sample_python .
