@@ -35,7 +35,4 @@ integrations:
   hub:
     - integrationName: ship4-docker
       type: docker
-      branches: 
-        only:
-          - master 
-   
+      
