@@ -30,7 +30,6 @@ build:
  # post_ci:
   #  - docker push shippabledocker/hitchcock2_sample_python
 
-
 integrations:
   hub:
     - integrationName: ship4-docker
