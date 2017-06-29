@@ -26,6 +26,7 @@ build:
   ci:
     - ps -eax
     - ls -al
+    - sleep 3m
 
  # post_ci:
   #  - docker push shippabledocker/hitchcock2_sample_python
