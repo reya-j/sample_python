@@ -82,20 +82,20 @@ build:
      # on_failure: always 
      # on_cancel: always
     
-    - integrationName: notify-hipchat
-      type: hipchat
-      recipients: 
-        - '#rc-private'
-        - '#rc-public'
-        - '@shiptestrcow'
-      on_start: always
-      on_success: always   
-      on_failure: always
-      on_cancel: always
+  #  - integrationName: notify-hipchat
+  #    type: hipchat
+  #    recipients: 
+  #      - '#rc-private'
+  #      - '#rc-public'
+  #      - '@shiptestrcow'
+  #    on_start: always
+  #    on_success: always   
+  #    on_failure: always
+  #    on_cancel: always
       
-  hub:
-    - integrationName: ship4-docker
-      type: docker
-      branches: 
-        only:
-          - master 
+ # hub:
+ #   - integrationName: ship4-docker
+ #     type: docker
+  #    branches: 
+  #      only:
+   #       - master 
